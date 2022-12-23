@@ -3,7 +3,7 @@ pipeline {
 
   tools {
     maven 'maven3'
-  
+  }
   environment {
 		DOCKERHUB_CREDENTIALS=credentials('Docker-hub')
 	}
