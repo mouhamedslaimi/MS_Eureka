@@ -11,8 +11,8 @@ RUN mvn clean package
 FROM openjdk:8-jre-alpine3.9
 
 # copy only the artifacts we need from the first stage and discard the rest
-COPY --from=MAVEN_BUILD target/*jar /demo.jar
+COPY --from=MAVEN_BUILD target/*jar /MS_Eureka.jar
 
 # set the startup command to execute the jar
 
-CMD ["java", "-jar", "/demo.jar"]
+CMD ["java", "-jar", "/MS_Eureka.jar"]
