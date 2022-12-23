@@ -3,7 +3,11 @@ pipeline {
 
   tools {
     maven 'maven3'
-  }
+  
+  environment {
+		DOCKERHUB_CREDENTIALS=credentials('Docker-hub')
+	}
+
   stages {
     stage('Checkout') {
       steps {
@@ -18,6 +22,23 @@ pipeline {
         }
       }
     }
+    stage('Build image') {
+       dockerImage = docker.build("slaimimed/MS_Eureka")
+    }
+    stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+    
+stage('Push') {
+
+			steps {
+				sh 'docker push slaimimed/MS_Eureka:latest'
+			}
+		}
      /*
     stage('Tests Integration') {
       steps {
@@ -49,5 +70,9 @@ pipeline {
     }
 */
   }
-  
+  	post {
+		always {
+			sh 'docker logout'
+		}
+	}
 }
