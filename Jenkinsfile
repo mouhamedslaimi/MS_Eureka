@@ -69,7 +69,8 @@ agent any
         		}
 
 		stage('Build image') {
-
+        def dockerHome = tool 'docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
 			steps {
 				sh 'docker build -t slaimimed/MS_Eureka:latest .'
 			}
