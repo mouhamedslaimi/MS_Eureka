@@ -48,11 +48,10 @@ pipeline{
 agent any
 	tools {
 		maven 'maven3'
+		docker 'docker'
 	}
 		environment {
     		DOCKERHUB_CREDENTIALS=credentials('Docker-hub')
-    		def dockerHome = tool 'docker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
     	}
 
 	stages {
