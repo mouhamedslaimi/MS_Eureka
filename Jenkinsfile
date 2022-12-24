@@ -23,7 +23,7 @@ pipeline {
       }
     }
     stage('Build image') {
-       sh 'docker build -t slaimimed/MS_Eureka:latest .")
+       sh 'docker build -t slaimimed/MS_Eureka:latest .'
     }
     stage('Login') {
 
