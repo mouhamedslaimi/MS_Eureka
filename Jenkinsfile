@@ -29,14 +29,11 @@ pipeline {
 
 
          stage('Quality') {
-              environment {
-                    SCANNER_HOME = tool 'sonar-scanner'
+        steps {
+              withSonarQubeEnv('SonarQube') {
+               sh 'mvn -Psonar -Dsonar.sourceEncoding=UTF-8 org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar'
               }
-             steps {
-                  withSonarQubeEnv('sonarqube')
-                     sh " sonar-scanner -D.login=sqa_1559fbe533d3ddd88d0324a8a67ff35966d49664"
-                }
-           	}
+         }
 
 	}
 }
