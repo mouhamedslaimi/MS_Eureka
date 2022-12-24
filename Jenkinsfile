@@ -36,8 +36,8 @@ pipeline {
                   sh "${SCANNER_HOME}/bin/sonar-scanner"
               }      
 	}
-	  /*
-    stage('Build Docker Image') {         
+	  
+/*     stage('Build Docker Image') {         
       steps{                
 	sh 'sudo docker build -t slaimimed/MS_Eureka:latest .'           
         echo 'Build Image Completed'                
@@ -54,14 +54,15 @@ pipeline {
 	sh 'sudo docker push slaimimed/MS_Eureka:latest' 
   echo 'Push Image Completed'       
       }           
-    }  
-    */
+    }   */
+    
   } //stages 
-/* 
-post{
+
+/* post{
     always {  
       sh 'docker logout'           
     }      
-  }  
-  */
+  }   */
+  
+  }
 } //pipeline
