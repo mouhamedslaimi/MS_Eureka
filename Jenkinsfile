@@ -1,4 +1,5 @@
 pipeline {
+
 	agent any
 	tools {
 		maven 'maven3'
@@ -26,16 +27,16 @@ pipeline {
               }
             }
 
-             stage('Quality') {
-                environment {
-                    SCANNER_HOME = tool 'sonar-scanner'
-                     }
-                      steps {
-                        withSonarQubeEnv('sonarqube') {
-                          sh "${SCANNER_HOME}/bin/sonar-scanner"
-                      }
-        	}
 
+         stage('Quality') {
+              environment {
+                    SCANNER_HOME = tool 'sonar-scanner'
+              }
+             steps {
+                  withSonarQubeEnv('sonarqube')
+                     sh "${SCANNER_HOME}/bin/sonar-scanner"
+                }
+           	}
 
 	}
 }
