@@ -28,16 +28,15 @@ pipeline {
             }
 
 
-            stage('SonarQube analysis') {
-              tools {
-                sonarQube 'SonarQube Scanner 2.8'
+         stage('Quality') {
+              environment {
+                    SCANNER_HOME = tool 'sonar-scanner'
               }
-              steps {
-                withSonarQubeEnv('SonarQube Scanner') {
-                  sh 'sonar-scanner'
+             steps {
+                  withSonarQubeEnv('sonarqube')
+                     sh "${SCANNER_HOME}/bin/sonar-scanner"
                 }
-              }
-            }
+           	}
 
 	}
 }
