@@ -34,7 +34,7 @@ pipeline {
               }
              steps {
                   withSonarQubeEnv('sonarqube')
-                     sh "${SCANNER_HOME}/bin/sonar-scanner"
+                     sh " sonar-scanner -D.login=sqa_1559fbe533d3ddd88d0324a8a67ff35966d49664"
                 }
            	}
 
