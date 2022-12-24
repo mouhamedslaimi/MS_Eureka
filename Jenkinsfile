@@ -28,7 +28,6 @@ pipeline {
             }
 
 
-         stages {
             stage('SonarQube analysis') {
               tools {
                 sonarQube 'SonarQube Scanner 2.8'
@@ -39,7 +38,6 @@ pipeline {
                 }
               }
             }
-          }
 
 	}
 }
